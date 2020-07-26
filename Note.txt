@@ -1,0 +1,64 @@
+PRECONDITION FOR VSCODE TO DEBUGGING
+Plugin:
+  1. Cucumber (Gherkin) Full Suppport
+  2. Cucumber JSON formatter
+  3. Cucumber Quick
+  4. JavaScript and TypesScript Nightly
+  5. JavaScript Debugger
+  6. TypesScript
+  7. TypeScript Debugger
+  8. Run protractor
+  6. Protractor Test Runner
+
+
+EXECUTION
+1. CLI: 
+  Two ways:
+  #1:
+    1. npm install
+    2. node node_modules\protractor\bin\webdriver-manager update
+    3. npm run test.protractor
+  #2:
+    npm run build && npm run test.protractor
+
+2. VSCODE:
+  Right-click >> Protractor: Run test(s)
+
+3. Chrome version:
+  node node_modules/protractor/bin/webdriver-manager update --version.chrome 84.0.4147.30
+
+4. Runner:
+  npx protractor protractor.conf.js --specs="<pathto>/e2e/cucumber/feature/Homepage.feature"
+
+5. Cucumber Protractor Feature execution:
+  protractor -- --feature <scenario_file> --cucumberOpts.name=<Scenario_name>
+  
+  Ex: 
+    protractor --feature e2e/cucumber/feature/Homepage.feature
+
+6. Chromedriver CLI:
+  + Start server:
+    chromedriver --port=9515 --verbose --log-path=chromedriver.log
+  
+  Note:
+    + Point in protractor.conf.js: seleniumAddress: 'http://localhost:9515',
+
+7. HAR analyzer online:
+  http://www.softwareishard.com/har/viewer/ OR use its chrome extension
+
+8. Debug settings:
+  #1. Protractor debug:
+  "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
+  "args": ["${workspaceRoot}/protractor.conf.js"]
+
+  Issue: Resolve 'import' ES6
+    Add snippet to protractor.conf.js
+    onPrepare() {
+        require('ts-node').register({
+          project: require('path').join(__dirname, './tsconfig.json')
+        });
+    }
+
+LIMITATION  
+1. Unable to save HAR file by name.
+  Solution: Apply puppeteer.launch as browser. then browser.start({'path':'name})

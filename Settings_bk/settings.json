@@ -1,0 +1,25 @@
+{
+    "cSpell.ignoreWords": [
+        "angularjs",
+        "browser",
+        "cucumber",
+        "cucumber reporter options",
+        "ha",
+        "options",
+        "reporter",
+        "rf",
+        "rfile",
+        "write",
+        "write ha rf",
+        "write ha rfile"
+    ],
+    "cucumber-quick": {
+        "tool": "protractor",
+        "script": "npx protractor protractor.conf.js"
+    },
+    "cucumberautocomplete.steps": [
+        "e2e/cucumber/steps/*.ts"
+    ],
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.syncfeatures": "e2e/cucumber/feature/*feature"
+}

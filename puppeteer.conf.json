@@ -1,0 +1,5 @@
+{
+    "connectToBrowser": true,
+    "timeout": 10000,
+    "harDir": "./HAR/"
+}
